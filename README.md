@@ -1,84 +1,48 @@
-# Prep Desktop — Démo Python / PyQt6
+# PREP@UDIT Desktop
 
-Petit projet de test pour comparer concrètement avec le starter Electron+React,
-avant de choisir la techno définitive pour Prep@udit Desktop.
+Application desktop développée en Python et PyQt6 dans le cadre d’un projet de fin d’année .
 
-## Ce que ça montre
+## Présentation
 
-- Une vraie fenêtre desktop (PyQt6), pas un site web
-- Une boîte de dialogue **native Windows** pour choisir un fichier CSV
-- Lecture et traitement du CSV avec **Pandas**
-- Un tableau interactif avec recherche/filtre en temps réel
-- Un mini dashboard (cartes de synthèse chiffrées)
+PREP@UDIT Desktop vise à automatiser et à faciliter la préparation et le traitement des données d’audit, en remplaçant une partie des manipulations manuelles auparavant réalisées sous Excel/VBA.
 
-## Prérequis
+## Fonctionnalités
 
-- Python 3.10 ou plus récent installé — vérifie avec :
-  ```bash
-  python --version
-  ```
+- **État des Engagements** : traitement des données et génération de différents états de synthèse.
+- **Garanties** : traitement et classification des données relatives aux garanties.
+- **Interface desktop** : application graphique développée avec PyQt6.
+- **Traitement des données** : utilisation de Pandas pour manipuler et analyser les fichiers.
+- **Consultation des résultats** : affichage des données traitées dans des tableaux interactifs.
+- **Export Excel** : génération de fichiers de résultats exploitables.
+
+## Technologies utilisées
+
+- Python
+- PyQt6
+- Pandas
+- OpenPyXL
+- PyInstaller
+
+## Architecture technique
+
+L’application suit une architecture desktop organisée en plusieurs modules. Les données sont chargées et traitées en mémoire, puis les résultats peuvent être exportés vers Excel.
 
 ## Installation
 
-Ouvre un terminal dans ce dossier, puis :
+1. Cloner le dépôt GitHub.
+2. Installer les dépendances.
+3. Lancer l’application.
 
 ```bash
+git clone https://github.com/Samia-ND/PREP-UDIT-Desktop.git
+cd PREP-UDIT-Desktop
 pip install -r requirements.txt
-```
-
-(Sur certains systèmes, utilise `pip3` au lieu de `pip`.)
-
-## Lancer l'application
-
-```bash
 python main.py
 ```
 
-## Tester
+## Projet académique
 
-1. Clique sur **"Charger des données d'exemple"** pour voir immédiatement le tableau
-   et le dashboard fonctionner
-2. Ou clique sur **"Ouvrir un fichier CSV"** pour tester avec un vrai fichier
-   (séparateur `;`, comme les exports bancaires français)
-3. Tape dans la barre de recherche pour filtrer les lignes en direct
+**PREP@UDIT Desktop — Projet de fin d’année (PFA)**
 
-## Construire un exécutable (.exe)
 
-Pour transformer ce script en un vrai fichier `.exe` installable, sans que
-la personne ait besoin d'installer Python :
 
-```bash
-pip install pyinstaller
-pyinstaller --onefile --windowed --name "PrepDesktop" main.py
-```
-
-L'exécutable sera généré dans le dossier `dist/`.
-
-- `--onefile` : un seul fichier .exe (plus simple à partager)
-- `--windowed` : pas de console noire qui s'ouvre en arrière-plan
-
-## Structure du projet
-
-```
-python-desktop-starter/
-├── main.py             -> Toute l'application (interface + logique)
-├── requirements.txt    -> Dépendances Python
-└── README.md
-```
-
-## Comparaison rapide avec le starter Electron
-
-| | Ce projet (Python/PyQt) | Starter Electron+React |
-|---|---|---|
-| Lignes de code pour la même démo | ~200 | ~250 (réparties en plusieurs fichiers) |
-| Traitement CSV | Pandas (très concis) | PapaParse (plus verbeux) |
-| Poids de l'exécutable final | ~40-60 Mo | ~120-150 Mo |
-| Look par défaut | Correct, demande du style manuel (fait ici en CSS Qt) | Moderne par défaut |
-
-## Prochaine étape
-
-Si ce test te convainc, on pourra structurer le vrai projet Prep@udit Desktop
-en Python avec :
-- Les classes du diagramme de conception (ModuleAudit, Extraction, ThemeResultat...)
-- Une base SQLite locale pour l'historique des extractions
-- Un module par thème (Engagements, Garanties, etc.) avec ses propres règles
